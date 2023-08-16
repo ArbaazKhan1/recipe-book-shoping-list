@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipes-list',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class RecipesListComponent {
 
+  recipes:Recipe[] = [
+    new Recipe('Recipe', "This is a test recpie", "https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg")
+  ];
 }
