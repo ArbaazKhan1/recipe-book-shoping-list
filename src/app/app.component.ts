@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'recipe-book-shoping-list';
 
   //by default load recipe page
-  @Input() selectedPage: number = 0;
+  selectedPage: number = 0;
 
   onNavigate(page: number) {
    this.selectedPage = page; 
