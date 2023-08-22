@@ -1,9 +1,11 @@
-<app-header></app-header>
+<!-- revice which page to load (recipe/shopping list) from header component -->
+<app-header (pageSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <!-- navigation based on selectedPage -->
+      <app-recipes *ngIf="selectedPage === 0"></app-recipes>
+      <app-shopping-list *ngIf="selectedPage === 1"></app-shopping-list>
     </div>
   </div>
 </div>
