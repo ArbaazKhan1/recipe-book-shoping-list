@@ -14,6 +14,12 @@ export class ShoppingListService {
         this.ingredients.push(ing);
         this.ingredientChanged.emit(this.getIngredients());
       } 
+
+      addIngredients(ings: Ingredient[]) {
+        //... is called the spread operator, it allows us to turn an array of elements to a list of elements 
+        this.ingredients.push(...ings);
+        this.ingredientChanged.emit(this.getIngredients());
+      }
       
       getIngredients() {
         return this.ingredients.slice();
