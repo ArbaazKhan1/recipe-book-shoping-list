@@ -12,9 +12,10 @@
         <!-- links to recipe & shopping list-->
         <div class="collapse navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="nav navbar-nav">
-                <!-- selected which page to load  -->
-                <li><a href="#" (click)="onSelect(0)">Recipes</a></li>
-                <li><a href="#" (click)="onSelect(1)">Shopping List</a></li>
+                <!-- selected which page to load. Use RouterLink via routing and set it each button to the absolute link of the button type  -->
+                <!-- routerlinkActive=active, is a directive that sets the current tab to active -->
+                <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+                <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
             </ul>
 
             <!-- dropDown Menu to save and get data -->
