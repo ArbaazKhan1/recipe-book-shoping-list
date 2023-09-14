@@ -3,10 +3,11 @@
         <app-recipes-list></app-recipes-list>
     </div>
     <div class="col-md-7">
+        <router-outlet></router-outlet>
         <!-- based off what we got from recipes-list we view that info. so If selectedRecipe is not null view recipe, Else show ng-template.  -->
-        <app-recipes-detail *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe"></app-recipes-detail>
+        <!-- <app-recipes-detail *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe"></app-recipes-detail>
         <ng-template #infoText>
             <p>Please select a Recipe!</p>
-        </ng-template>
+        </ng-template> -->
     </div>
 </div>
