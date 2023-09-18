@@ -26,7 +26,8 @@ export class RecipeService {
            ])
       ];
 
-      recipeSelected = new EventEmitter<Recipe>();
+      //Don't need this because we implemented routing
+      // recipeSelected = new EventEmitter<Recipe>();
 
       constructor(private slService: ShoppingListService) {}
       

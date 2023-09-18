@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from './recipe.model';
 import { RecipeService } from './recipe.service';
 
 @Component({
@@ -9,17 +8,18 @@ import { RecipeService } from './recipe.service';
   providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit {
-  selectedRecipe: Recipe;
+  // selectedRecipe: Recipe;
 
-  constructor(private recipeService: RecipeService) {}
+  // constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
+    //We don't need this because rounting is now handling data across recipes 
     //we are reciving the slected recipe from recipe-item.component by using recipeService
-    this.recipeService.recipeSelected.subscribe(
-      (recipe: Recipe) => {
-        this.selectedRecipe = recipe
-      }
-    );
+    // this.recipeService.recipeSelected.subscribe(
+    //   (recipe: Recipe) => {
+    //     this.selectedRecipe = recipe
+    //   }
+    // );
   }
 
   
