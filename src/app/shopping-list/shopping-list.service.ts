@@ -37,4 +37,10 @@ export class ShoppingListService {
       getIngredients() {
         return this.ingredients.slice();
       }
+
+      deleteIngredient(index: number) {
+        // splice allows us to start at a specific point (i.e. at the index) and then splice 1 element, thus removing it
+        this.ingredients.splice(index, 1);
+        this.ingredientChanged.next(this.ingredients.slice());
+      }
 }
