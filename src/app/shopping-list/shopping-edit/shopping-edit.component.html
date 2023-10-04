@@ -21,7 +21,7 @@
                 <div class="col-xs-12">
                     <!-- we could simple pass in the local variables to onAddItem, but for the sake of diversity we will be using ViewCHild -->
                     <!-- Since the Add btn is of type submit, it works insync with ngSubmit and calls onAddItem() -->
-                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add'}}</button>
                     <button class="btn btn-danger" type="button">Delete</button>
                     <button class="btn btn-primary" type="button">Clear</button>
                 </div>
