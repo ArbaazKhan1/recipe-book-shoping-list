@@ -30,4 +30,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy{
     this.subcription.unsubscribe(); //Always unSub ur observables
   }
 
+  onEditItem(index: number) {
+    // slService handles tansfer of data so set index to an observable
+    this.slService.startedEditing.next(index);
+  }
 }
