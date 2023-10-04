@@ -1,24 +1,26 @@
 <div class="row">
     <div class="col xs-12">
-        <form>
+        <!-- setting local ref f to ngForm gives us access to js object angualr created behids the scenes  -->
+        <form (ngSubmit)="onAddItem(f)" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
                     <!-- local variable nameInput -->
-                    <input type="text" id="name" class="form-control" #nameInput> 
+                    <input type="text" id="name" class="form-control" name="name" ngModel> 
                 </div>
                 
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
                     <!-- local variable amountInput -->
-                    <input type="number"  id="amount" class="form-control" #amountInput>
+                    <input type="number"  id="amount" class="form-control" name="amount" ngModel>
                 </div>
             </div>
             <!-- Buttons to manage item creation/editing -->
             <div class="row">
                 <div class="col-xs-12">
                     <!-- we could simple pass in the local variables to onAddItem, but for the sake of diversity we will be using ViewCHild -->
-                    <button class="btn btn-success" type="submit" (click)="onAddItem()">Add</button>
+                    <!-- Since the Add btn is of type submit, it works insync with ngSubmit and calls onAddItem() -->
+                    <button class="btn btn-success" type="submit">Add</button>
                     <button class="btn btn-danger" type="button">Delete</button>
                     <button class="btn btn-primary" type="button">Clear</button>
                 </div>
