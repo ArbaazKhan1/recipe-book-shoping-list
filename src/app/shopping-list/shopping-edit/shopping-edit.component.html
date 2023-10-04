@@ -6,13 +6,14 @@
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
                     <!-- local variable nameInput -->
-                    <input type="text" id="name" class="form-control" name="name" ngModel> 
+                    <input type="text" id="name" class="form-control" name="name" ngModel required> 
                 </div>
                 
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
                     <!-- local variable amountInput -->
-                    <input type="number"  id="amount" class="form-control" name="amount" ngModel>
+                    <!-- pattern validator checks input to regular expression, the expression just any num over 0 is valid -->
+                    <input type="number"  id="amount" class="form-control" name="amount" ngModel required pattern="^[1-9]+[0-9]*$">
                 </div>
             </div>
             <!-- Buttons to manage item creation/editing -->
@@ -20,7 +21,7 @@
                 <div class="col-xs-12">
                     <!-- we could simple pass in the local variables to onAddItem, but for the sake of diversity we will be using ViewCHild -->
                     <!-- Since the Add btn is of type submit, it works insync with ngSubmit and calls onAddItem() -->
-                    <button class="btn btn-success" type="submit">Add</button>
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
                     <button class="btn btn-danger" type="button">Delete</button>
                     <button class="btn btn-primary" type="button">Clear</button>
                 </div>
