@@ -37,7 +37,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   //we want to emmit an event where we pass this data to the parent component(shopping-list)
-  onAddItem(form: NgForm) {
+  onSubmit(form: NgForm) {
     const val = form.value;
     const newIngredient = new Ingredient(val.name, val.amount);
     if(this.editMode) {
@@ -45,5 +45,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     } else {
       this.slService.addIngredient(newIngredient);
     }
+    this.editMode = false;
+    form.reset();
   }
 }
