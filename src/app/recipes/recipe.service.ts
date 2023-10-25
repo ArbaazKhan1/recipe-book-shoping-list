@@ -56,4 +56,10 @@ export class RecipeService {
       this.recipes[index] = newRecipe;
       this.recipesChanged.next(this.recipes.slice());
     }
+
+    deleteRecipe(index: number) {
+      // splice allows us to start at a specific point (i.e. at the index) and then splice 1 element, thus removing it
+      this.recipes.splice(index,1);
+      this.recipesChanged.next(this.recipes.slice());
+    }
 }

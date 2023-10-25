@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <button class="btn btn-success" type="submit" [disabled]="!recipeForm.valid">Save</button>
-                    <button class="btn btn-danger" type="button">Cancel</button>
+                    <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
                 </div>
             </div>
         <!-- the value of formCOntrolName is based off of what we set the recipeForm object to in the ts file -->
