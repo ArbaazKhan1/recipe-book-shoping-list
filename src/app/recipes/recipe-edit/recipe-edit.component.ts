@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
@@ -30,6 +30,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeName = '';
     let recipeImgPath = '';
     let recipeDescrip = '';
+    let recipeIngredients = new FormArray([]);
 
 
     if(this.editMode) {
@@ -37,17 +38,50 @@ export class RecipeEditComponent implements OnInit {
       recipeName = recipe.name;
       recipeImgPath = recipe.imagePath;
       recipeDescrip = recipe.description;
+      if(recipe['ingredients']) {
+        // loop thru all ingredients in recipe and add them to recipeIngredients
+        for(let ing of recipe.ingredients) {
+          recipeIngredients.push(
+            // We use form group cuz we have to form controls, name & amount
+            new FormGroup({
+              'name': new FormControl(ing.name, Validators.required),
+              'amount': new FormControl(ing.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/)
+              ])
+            })
+          );
+        }
+      }
     }
 
 
     this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName),
-      'imgPath': new FormControl(recipeImgPath),
-      'description': new FormControl(recipeDescrip)
+      // we dont execute the method required (i.e. () ), we just want a referance to it
+      'name': new FormControl(recipeName, Validators.required),
+      'imgPath': new FormControl(recipeImgPath, Validators.required),
+      'description': new FormControl(recipeDescrip, Validators.required),
+      'ingredients': recipeIngredients
     });
+  }
+
+  onAddIng() {
+    (<FormArray>this.recipeForm.get('ingredients')).push(
+      new FormGroup({
+        'name': new FormControl(null, Validators.required),
+        'amount': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/)
+        ])
+      })
+    );
   }
 
   onSubmit() {
     console.log(this.recipeForm);
+  }
+
+  get Controls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 }
