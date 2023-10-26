@@ -24,7 +24,7 @@ export class RecipeEditComponent implements OnInit {
         // call initForm when ever route params change, cuz that means we have reloaded the page
         this.initForm();
       }
-    )
+    );
   }
 
   private initForm() {
@@ -76,6 +76,11 @@ export class RecipeEditComponent implements OnInit {
         ])
       })
     );
+  }
+
+  onDeleteIng(index: number) {
+    // Get the specific recipe ingredients from FormArrays and remove the ingredient at index
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
   onCancel() {
